@@ -56,13 +56,35 @@ const App = () => {
 
 const ChildComponent = props => {
   console.log("Child rendering starts");
+
   const [count, setCount] = useState(() => {
     console.log("Child useState Hook");
     return 0;
   });
 
+  useEffect(() => {
+    console.log("Child useEffect without deps");
+    return () => {
+      console.log("Child useEffect without deps - Cleanup");
+    };
+  });
+
+  useEffect(() => {
+    console.log("Child useEffect with empty deps");
+    return () => {
+      console.log("Child useEffect with empty deps - Cleanup");
+    };
+  }, []);
+
+  useEffect(() => {
+    console.log("Child useEffect with deps");
+    return () => {
+      console.log("Child useEffect with deps - Cleanup");
+    };
+  }, [count]);
+
   return (
-    <div style={{ display: "flex", justifyContent: "center", height: 30 }}>
+    <div style={{ display: "flex", justifyContent: "center" }}>
       <button
         style={{
           height: 30,

@@ -11,14 +11,23 @@ const App = () => {
 
   useEffect(() => {
     console.log("Parent useEffect without deps");
+    return () => {
+      console.log("Parent useEffect without deps - Cleanup");
+    };
   });
 
   useEffect(() => {
     console.log("Parent useEffect with empty deps");
+    return () => {
+      console.log("Parent useEffect with empty deps - Cleanup");
+    };
   }, []);
 
   useEffect(() => {
     console.log("Parent useEffect with deps");
+    return () => {
+      console.log("Parent useEffect with deps - Cleanup");
+    };
   }, [showChild]);
 
   return (

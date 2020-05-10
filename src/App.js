@@ -40,7 +40,15 @@ const App = () => {
         />
         Show Child
       </div>
-      {showChild ? <ChildComponent /> : null}
+      <div
+        style={{
+          height: 100,
+          width: 100,
+          background: "lightBlue"
+        }}
+      >
+        {showChild ? <ChildComponent /> : null}
+      </div>
       {console.log("Parent rendering Ends")}
     </>
   );
@@ -54,15 +62,21 @@ const ChildComponent = props => {
   });
 
   return (
-    <>
+    <div style={{ display: "flex", justifyContent: "center", height: 30 }}>
       <button
-        style={{ height: 30, width: 30 }}
+        style={{
+          height: 30,
+          width: 30,
+          display: "flex",
+          justifyContent: "center",
+          marginTop: 30
+        }}
         onClick={() => setCount(count + 1)}
       >
         {count}
       </button>
       {console.log("Child rendering Ends")}
-    </>
+    </div>
   );
 };
 
